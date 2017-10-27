@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+class Node   
+{  
+    private:   
+       int data;  
+       int key;  
+       // ...  
+  
+    friend class BinaryTree; // class BinaryTree can now access data directly  
+};  
+这样BinaryTree就可以直接访问Node中的private的成员了，就像下面这样：
+[html] view plain copy print?
+class BinaryTree  
+{  
+    private:  
+       Node *root;  
+  
+    int find(int key);  
+};  
+int BinaryTree::find(int key)  
+{  
+    // check root for NULL...  
+    if(root->key == key)  
+    {  
+        // no need to go through an accessor function  
+        return root->data;  
+    }  
+    // perform rest of find  
+} 

@@ -8,11 +8,11 @@ int main()
 {
 	map<int, string> mapStudent;
 
-	mapStudent.insert(pair<int, string>(1, "Student_1"));
+	mapStudent.insert(map<int, string>::value_type (1, "Student_1"));
 
-	mapStudent.insert(pair<int, string>(2, "Student_2"));
+	mapStudent.insert(map<int, string>::value_type (2, "Student_2"));
 
-	mapStudent.insert(pair<int, string>(3, "Student_3"));
+	mapStudent.insert(map<int, string>::value_type (3, "Student_3"));
 
 	map<int, string>::iterator iter;
 
@@ -21,3 +21,6 @@ int main()
 		cout<<iter->first << ' ' << iter->second << endl;
 	}
 }
+
+
+

@@ -1,0 +1,54 @@
+对于一个没有定义public访问权限的类，能够让其他的类操作它的私有成员往往是有用的。例如你写了一段binary tree的代码，Node是节点类，如果能够让连接多个节点的函数不需要调用public方法就能够访问到Node的私有成员的话，一定是很方便的。
+Friend Classes（友元类）
+C++中的friend关键字其实做这样的事情：在一个类中指明其他的类（或者）函数能够直接访问该类中的private和protected成员。
+你可以这样来指明：
+
+friend class aClass;
+注意：friend在类中的声明可以再public、protected和private的如何一个控制域中，而不影响其效果。例如，如果你在protected域中有这样的声明，那么aClass类同样可以访问该类的private成员。
+这有一个例子：
+
+[html] view plain copy print?
+class Node   
+{  
+    private:   
+       int data;  
+       int key;  
+       // ...  
+  
+    friend class BinaryTree; // class BinaryTree can now access data directly  
+};  
+这样BinaryTree就可以直接访问Node中的private的成员了，就像下面这样：
+[html] view plain copy print?
+class BinaryTree  
+{  
+    private:  
+       Node *root;  
+  
+    int find(int key);  
+};  
+int BinaryTree::find(int key)  
+{  
+    // check root for NULL...  
+    if(root->key == key)  
+    {  
+        // no need to go through an accessor function  
+        return root->data;  
+    }  
+    // perform rest of find  
+}  
+Friend Functions（友元函数）
+友元函数和友元类的作用是一样的，它允许一个函数不需要通过其public接口就能够访问到类中的private和protected成员变量。
+你可以这样去声明：
+
+friend return_type class_name::function(args);
+这里有一个例子：
+class Node 
+{
+    private: 
+       int data;
+       int key;
+       // ...
+
+    friend int BinaryTree::find(); // Only BinaryTree's find function has access
+};
+这样find方法就可以直接访问Node中的私有成员变量了，而BinaryTree中的其他的方法去不能够直接的访问Node的成员变量。（这就是友元类和友元函数的区别）

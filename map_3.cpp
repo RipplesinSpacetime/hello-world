@@ -8,11 +8,9 @@ int main()
 {
 	map<int, string> mapStudent;
 
-	mapStudent.insert(pair<int, string>(1, "Student_1"));
-
-	mapStudent.insert(pair<int, string>(2, "Student_2"));
-
-	mapStudent.insert(pair<int, string>(3, "Student_3"));
+	mapStudent[0] = "student_0";
+	mapStudent[2] = "student_2";
+	mapStudent[3] = "student_3";
 
 	map<int, string>::iterator iter;
 
