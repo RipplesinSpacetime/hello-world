@@ -1,0 +1,32 @@
+#ifndef _TEST_H
+#define _TEST_H
+
+class Shape
+{
+public:
+     virtual  void Draw() =  0;
+     virtual ~Shape() {}
+};
+
+class Circle :  public Shape
+{
+public:
+     void Draw();
+     ~Circle();
+};
+
+class Square :  public Shape
+{
+public:
+     void Draw();
+     ~Square();
+};
+
+class Rectangle :  public Shape
+{
+public:
+     void Draw();
+     ~Rectangle();
+};
+
+#endif
