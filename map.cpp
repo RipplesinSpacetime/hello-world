@@ -11,6 +11,7 @@ using namespace std;
 
 int main()
 {
+	cout << "Hello, GitHub! "<< endl;
 	map<int, string> mapStudent;
 
 	mapStudent.insert(pair<int, string>(1, "Student_1"));
